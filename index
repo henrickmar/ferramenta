@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ferramentaria</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <div class="page">
+
+    <header class="header">
+      <div>
+        <div class="eyebrow">CONTROLE DE FERRAMENTAS</div>
+        <h1 class="title">Ferramentaria</h1>
+      </div>
+
+      <div class="header-stats">
+        <div class="stat-block">
+          <div class="stat-number" id="totalTools">0</div>
+          <div class="stat-label">cadastradas</div>
+        </div>
+
+        <div class="stat-block" id="loanedStat">
+          <div class="stat-number" id="totalLoaned">0</div>
+          <div class="stat-label">emprestadas</div>
+        </div>
+      </div>
+    </header>
+
+    <div class="toolbar">
+
+      <input
+        type="text"
+        id="searchInput"
+        class="search-input"
+        placeholder="Buscar por nome ou codigo"
+      >
+
+      <div class="filter-group">
+        <button class="filter-btn active" data-filter="todas">
+          Todas
+        </button>
+
+        <button class="filter-btn" data-filter="disponiveis">
+          Disponiveis
+        </button>
+
+        <button class="filter-btn" data-filter="emprestadas">
+          Emprestadas
+        </button>
+      </div>
+
+      <button class="add-btn" id="addToolBtn">
+        + Nova ferramenta
+      </button>
+
+    </div>
+
+    <div id="errorBanner" class="error-banner hidden"></div>
+    <div id="savingBanner" class="saving-banner hidden">Salvando...</div>
+
+    <!-- FORMULÁRIO -->
+    <div id="addToolCard" class="inline-card hidden">
+
+      <div class="inline-card-title">
+        Cadastrar ferramenta
+      </div>
+
+      <div class="inline-card-row">
+
+        <input
+          type="text"
+          id="toolName"
+          class="text-input"
+          placeholder="Nome da ferramenta (ex: Furadeira Bosch)"
+        >
+
+        <input
+          type="text"
+          id="toolCode"
+          class="text-input code-input"
+          placeholder="Codigo / etiqueta (opcional)"
+        >
+
+        <input
+          type="number"
+          id="toolValue"
+          class="text-input value-input"
+          min="0"
+          step="0.01"
+          placeholder="Valor (R$)"
+        >
+
+      </div>
+
+      <div class="photo-section">
+
+        <label class="modal-label">
+          Fotos (ate 3)
+        </label>
+
+        <div id="photoRow" class="photo-row"></div>
+
+      </div>
+
+      <div class="inline-card-actions">
+
+        <button class="ghost-btn" id="cancelAddBtn">
+          Cancelar
+        </button>
+
+        <button class="primary-btn" id="saveToolBtn">
+          Salvar
+        </button>
+
+      </div>
+
+    </div>
+
+    <!-- LISTA -->
+    <div id="emptyState" class="empty-state hidden"></div>
+
+    <div id="toolsList" class="list"></div>
+
+  </div>
+
+  <!-- MODAL DE FOTOS -->
+  <div id="previewOverlay" class="modal-overlay hidden">
+
+    <div class="preview-modal" id="previewModal">
+
+      <div class="modal-title" id="previewTitle"></div>
+
+      <div class="preview-photos" id="previewPhotos"></div>
+
+      <div class="inline-card-actions">
+        <button class="ghost-btn" id="closePreviewBtn">
+          Fechar
+        </button>
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- MODAL DE EMPRÉSTIMO -->
+  <div id="loanOverlay" class="modal-overlay hidden">
+
+    <div class="modal">
+
+      <div class="modal-title" id="loanTitle"></div>
+
+      <label class="modal-label">
+        Quem esta levando?
+      </label>
+
+      <input
+        type="text"
+        id="borrowerName"
+        class="text-input"
+        placeholder="Nome do colega"
+      >
+
+      <div id="loanError" class="modal-error hidden"></div>
+
+      <div class="inline-card-actions">
+
+        <button class="ghost-btn" id="cancelLoanBtn">
+          Cancelar
+        </button>
+
+        <button class="primary-btn" id="confirmLoanBtn">
+          Confirmar emprestimo
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <script src="script.js"></script>
+
+</body>
+</html>

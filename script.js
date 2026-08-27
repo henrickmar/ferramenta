@@ -1070,7 +1070,9 @@ function renderHeader(
   eyebrow,
   title,
   number,
-  label
+  label,
+  extraNumber,
+  extraLabel
 ) {
   return `
     <header class="header">
@@ -1089,6 +1091,7 @@ function renderHeader(
         number !== undefined
           ? `
             <div class="header-stats">
+
               <div class="stat-block">
                 <div class="stat-number">
                   ${number}
@@ -1098,6 +1101,23 @@ function renderHeader(
                   ${label}
                 </div>
               </div>
+
+              ${
+                extraNumber !== undefined
+                  ? `
+                    <div class="stat-block">
+                      <div class="stat-number">
+                        ${extraNumber}
+                      </div>
+
+                      <div class="stat-label">
+                        ${extraLabel}
+                      </div>
+                    </div>
+                  `
+                  : ""
+              }
+
             </div>
           `
           : ""
@@ -1120,13 +1140,19 @@ function renderProprias() {
       tool => getActiveLoan(tool.id)
     ).length;
 
+  const totalDisponiveis =
+    state.tools.length -
+    totalEmprestadas;
+
   return `
 
     ${renderHeader(
       "CONTROLE DE FERRAMENTAS",
       "Ferramentas Próprias",
       state.tools.length,
-      "cadastradas"
+      "cadastradas",
+      totalEmprestadas,
+      "alocadas"
     )}
 
     <div class="toolbar">
@@ -1160,6 +1186,9 @@ function renderProprias() {
           data-filter="disponiveis"
         >
           Disponíveis
+          <span class="filter-count">
+            ${totalDisponiveis}
+          </span>
         </button>
 
         <button
@@ -1171,6 +1200,9 @@ function renderProprias() {
           data-filter="emprestadas"
         >
           Alocadas
+          <span class="filter-count">
+            ${totalEmprestadas}
+          </span>
         </button>
 
       </div>
@@ -1200,6 +1232,7 @@ function renderProprias() {
         class="filter-input"
         data-field="obraFilter"
       >
+
         <option value="">
           Todas as obras
         </option>
@@ -1221,6 +1254,7 @@ function renderProprias() {
 
       <label>
         Cadastrada de
+
         <input
           type="date"
           class="filter-input"
@@ -1231,6 +1265,7 @@ function renderProprias() {
 
       <label>
         até
+
         <input
           type="date"
           class="filter-input"

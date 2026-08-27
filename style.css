@@ -2,8 +2,15 @@
   box-sizing: border-box;
 }
 
+html,
 body {
   margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100%;
+}
+
+body {
   font-family: "Inter", sans-serif;
   background: #F5F3EC;
   color: #33322D;
@@ -26,329 +33,544 @@ select:focus {
   outline-offset: 1px;
 }
 
+/* =========================================================
+   APP
+   ========================================================= */
+
 #app {
-  display: flex;
-  min-height: 100vh;
   width: 100%;
+  min-height: 100vh;
 }
 
-/* SIDEBAR */
+/* =========================================================
+   SIDEBAR
+   ========================================================= */
 
 .sidebar {
-  width: 180px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+
+  width: 208px;
+  height: 100vh;
+
   flex-shrink: 0;
+
   background: #33322D;
+
   display: flex;
   flex-direction: column;
+
   padding: 1.25rem 0.75rem;
+
   gap: 4px;
+
+  z-index: 50;
+
+  overflow-y: auto;
+  overflow-x: hidden;
 }
+
+/* Marca da Ferramentaria */
 
 .sidebar-brand {
   display: flex;
   align-items: center;
+
   gap: 8px;
+
   padding: 0 0.5rem;
+
   margin-bottom: 18px;
+
+  flex-shrink: 0;
 }
 
 .sidebar-brand-mark {
-  width: 28px;
-  height: 28px;
+  width: 32px;
+  height: 32px;
+
   border-radius: 4px;
+
   background: #F2B705;
   color: #33322D;
+
   font-family: "Oswald", sans-serif;
   font-weight: 700;
-  font-size: 13px;
+  font-size: 14px;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  flex-shrink: 0;
 }
 
 .sidebar-brand-text {
   font-family: "Oswald", sans-serif;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 600;
+
   color: #fff;
+
+  white-space: nowrap;
 }
 
+/* Itens do menu */
+
 .nav-item {
+  width: 100%;
+
   text-align: left;
-  padding: 10px 12px;
-  font-size: 14px;
+
+  padding: 11px 14px;
+
+  font-size: 15px;
   font-weight: 500;
+
   border: none;
   border-radius: 4px;
+
   background: transparent;
+
   color: #C9C6BA;
+
+  line-height: 1.35;
+
+  flex-shrink: 0;
 }
 
 .nav-item:hover {
-  background: rgba(255,255,255,.06);
+  background: rgba(255, 255, 255, 0.06);
 }
 
 .nav-item.active {
   font-weight: 600;
-  background: rgba(242,183,5,.15);
+
+  background: rgba(242, 183, 5, 0.15);
+
   color: #F2B705;
 }
 
-/* MAIN */
+/* =========================================================
+   MAIN
+   ========================================================= */
 
 .main {
-  flex: 1;
+  width: calc(100% - 208px);
+
   min-width: 0;
+  min-height: 100vh;
+
+  margin-left: 208px;
+
+  background: #F5F3EC;
 }
 
+/* =========================================================
+   HEADER
+   ========================================================= */
+
 .header {
+  width: 100%;
+
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+
   padding: 1.75rem 1.5rem 1.25rem;
+
   border-bottom: 3px solid #33322D;
+
+  background: #F5F3EC;
 }
 
 .eyebrow {
   font-family: "Oswald", sans-serif;
+
   font-size: 12px;
+
   letter-spacing: .14em;
+
   color: #3E5C76;
+
   font-weight: 600;
+
   margin-bottom: 4px;
 }
 
 .title {
   font-family: "Oswald", sans-serif;
+
   font-size: 34px;
+
   font-weight: 700;
+
   margin: 0;
 }
 
 .header-stats {
   display: flex;
+
   gap: 12px;
+
+  flex-shrink: 0;
 }
 
 .stat-block {
   border: 2px solid #3E5C76;
+
   border-radius: 4px;
+
   padding: 6px 16px;
+
   text-align: center;
+
   min-width: 84px;
+
+  background: #F5F3EC;
 }
 
 .stat-number {
   font-family: "Oswald", sans-serif;
+
   font-size: 26px;
+
   font-weight: 700;
+
   line-height: 1;
 }
 
 .stat-label {
   font-size: 11px;
+
   color: #847F6E;
+
   margin-top: 2px;
+
   text-transform: uppercase;
+
   letter-spacing: .06em;
 }
 
-/* TOOLBAR */
+/* =========================================================
+   TOOLBAR
+   ========================================================= */
 
 .toolbar {
   display: flex;
+
   gap: 10px;
+
   padding: 1.25rem 1.5rem .5rem;
+
   flex-wrap: wrap;
+
   align-items: center;
+
   justify-content: space-between;
+
+  width: 100%;
 }
 
 .search-input {
   flex: 1 1 220px;
+
+  min-width: 0;
+
   padding: 10px 12px;
+
   border: 1.5px solid #DEDACC;
+
   border-radius: 4px;
+
   font-size: 14px;
+
   background: #fff;
+
+  color: #33322D;
 }
 
 .filter-group {
   display: flex;
+
   gap: 4px;
+
   background: #EAE6D9;
+
   padding: 3px;
+
   border-radius: 4px;
 }
 
 .filter-btn {
   padding: 7px 12px;
+
   font-size: 13px;
+
   border: none;
+
   background: transparent;
+
   color: #847F6E;
+
   border-radius: 3px;
 }
 
 .filter-btn.active {
   background: #33322D;
+
   color: #fff;
 }
 
 .add-btn {
   padding: 10px 16px;
+
   font-size: 14px;
+
   font-weight: 600;
+
   border: none;
+
   border-radius: 4px;
+
   background: #F2B705;
+
   color: #33322D;
+
+  white-space: nowrap;
 }
 
 .add-btn:hover {
   background: #dca700;
 }
 
-/* FILTERS */
+/* =========================================================
+   FILTERS
+   ========================================================= */
 
 .filter-bar {
   display: flex;
+
   gap: 10px;
+
   padding: 8px 1.5rem;
+
   flex-wrap: wrap;
+
   align-items: center;
+
+  width: 100%;
 }
 
 .filter-input {
   padding: 10px 12px;
+
   border: 1.5px solid #DEDACC;
+
   border-radius: 4px;
+
   font-size: 14px;
+
   background: #fff;
+
+  color: #33322D;
 }
 
 .date-range {
   display: flex;
+
   align-items: center;
+
   gap: 7px;
 }
 
 .date-range-label {
   font-size: 12px;
+
   color: #847F6E;
 }
 
 .clear-filter-btn {
   padding: 9px 12px;
+
   border: none;
+
   background: transparent;
+
   color: #C1440E;
+
   text-decoration: underline;
 }
 
-/* CARDS */
+/* =========================================================
+   CARDS
+   ========================================================= */
 
 .inline-card {
   margin: 1rem 1.5rem 0;
+
   background: #fff;
+
   border: 1.5px solid #DEDACC;
+
   border-radius: 6px;
+
   padding: 1rem;
 }
 
 .inline-card-title {
   font-family: "Oswald", sans-serif;
+
   font-size: 15px;
+
   font-weight: 600;
+
   margin-bottom: 10px;
 }
 
 .inline-card-row {
   display: flex;
+
   gap: 10px;
+
   flex-wrap: wrap;
+
   margin-bottom: 10px;
 }
 
 .text-input,
 .select-input {
   flex: 1 1 200px;
+
   padding: 10px 12px;
+
   border: 1.5px solid #DEDACC;
+
   border-radius: 4px;
+
   font-size: 14px;
+
   background: #fff;
+
   color: #33322D;
 }
 
 .hint-text {
   font-size: 12px;
+
   color: #847F6E;
+
   margin: -4px 0 10px;
 }
 
 .inline-card-actions {
   display: flex;
+
   justify-content: flex-end;
+
   gap: 8px;
+
   margin-top: 12px;
 }
 
 .ghost-btn {
   padding: 9px 14px;
+
   font-size: 13px;
+
   font-weight: 500;
+
   border: 1.5px solid #DEDACC;
+
   border-radius: 4px;
+
   background: transparent;
+
   color: #33322D;
 }
 
 .primary-btn {
   padding: 9px 16px;
+
   font-size: 13px;
+
   font-weight: 600;
+
   border: none;
+
   border-radius: 4px;
+
   background: #3E5C76;
+
   color: #fff;
 }
 
-/* LIST */
+/* =========================================================
+   LISTA
+   ========================================================= */
 
 .list {
   display: flex;
+
   flex-direction: column;
+
   gap: 10px;
+
   padding: 1rem 1.5rem 2rem;
+
+  width: 100%;
 }
 
 .tag-card {
   display: flex;
+
   align-items: center;
+
   gap: 14px;
+
+  width: 100%;
+
   background: #fff;
+
   border: 1.5px solid #DEDACC;
+
   border-left: 6px solid #3E5C76;
+
   border-radius: 4px;
+
   padding: 12px 16px;
+
+  min-width: 0;
 }
 
 .punch-hole {
   width: 12px;
   height: 12px;
+
   border-radius: 50%;
+
   background: #F5F3EC;
+
   border: 1.5px solid #DEDACC;
+
   flex-shrink: 0;
 }
 
 .tag-body {
   display: flex;
+
   flex: 1;
+
+  min-width: 0;
+
   justify-content: space-between;
+
   align-items: center;
+
   gap: 12px;
+
   flex-wrap: wrap;
 }
 
@@ -358,14 +580,19 @@ select:focus {
 
 .tag-name {
   font-family: "Oswald", sans-serif;
+
   font-size: 17px;
+
   font-weight: 600;
 }
 
 .tag-name-clickable {
   font-family: "Oswald", sans-serif;
+
   font-size: 17px;
+
   font-weight: 600;
+
   cursor: pointer;
 }
 
@@ -375,8 +602,11 @@ select:focus {
 
 .tag-meta-row {
   display: flex;
+
   gap: 10px;
+
   margin-top: 2px;
+
   flex-wrap: wrap;
 }
 
@@ -391,15 +621,21 @@ select:focus {
 
 .tag-value {
   color: #3E5C76;
+
   font-weight: 600;
 }
 
 .tag-obra {
   font-size: 12px;
+
   color: #33322D;
+
   background: #EAE6D9;
+
   padding: 2px 8px;
+
   border-radius: 3px;
+
   font-weight: 500;
 }
 
@@ -409,75 +645,111 @@ select:focus {
 
 .status-available {
   font-size: 13px;
+
   font-weight: 600;
+
   color: #2E7D4F;
 }
 
 .status-loaned {
   font-size: 13px;
+
   font-weight: 600;
+
   color: #C1440E;
 }
 
 .status-loaned-sub {
   font-size: 12px;
+
   color: #847F6E;
+
   margin-top: 2px;
 }
 
 .tag-actions {
   display: flex;
+
   align-items: center;
+
   gap: 10px;
 }
 
 .loan-btn {
   padding: 8px 14px;
+
   font-size: 13px;
+
   font-weight: 600;
+
   border: none;
+
   border-radius: 4px;
+
   background: #33322D;
+
   color: #fff;
 }
 
 .return-btn {
   padding: 8px 14px;
+
   font-size: 13px;
+
   font-weight: 600;
+
   border: 1.5px solid #3E5C76;
+
   border-radius: 4px;
+
   background: transparent;
+
   color: #3E5C76;
 }
 
 .remove-btn {
   padding: 6px 8px;
+
   font-size: 12px;
+
   border: none;
+
   background: transparent;
+
   color: #847F6E;
+
   text-decoration: underline;
 }
 
-/* PHOTOS */
+/* =========================================================
+   FOTOS
+   ========================================================= */
 
 .card-thumb {
   width: 48px;
   height: 48px;
+
   object-fit: cover;
+
   border-radius: 4px;
+
   border: 1.5px solid #DEDACC;
+
   flex-shrink: 0;
+
   cursor: pointer;
 }
 
 .card-thumb-placeholder {
   width: 48px;
   height: 48px;
+
   border-radius: 4px;
+
   border: 1.5px dashed #DEDACC;
+
   background: #F5F3EC;
+
   flex-shrink: 0;
 }
 
@@ -487,12 +759,15 @@ select:focus {
 
 .photo-row {
   display: flex;
+
   gap: 8px;
+
   flex-wrap: wrap;
 }
 
 .photo-thumb-wrap {
   position: relative;
+
   width: 64px;
   height: 64px;
 }
@@ -500,48 +775,75 @@ select:focus {
 .photo-thumb {
   width: 64px;
   height: 64px;
+
   object-fit: cover;
+
   border-radius: 4px;
+
   border: 1.5px solid #DEDACC;
 }
 
 .photo-remove-btn {
   position: absolute;
+
   top: -6px;
   right: -6px;
+
   width: 20px;
   height: 20px;
+
   border-radius: 50%;
+
   border: 1.5px solid #DEDACC;
+
   background: #fff;
+
   color: #C1440E;
+
   padding: 0;
 }
 
 .photo-add-btn {
   width: 64px;
   height: 64px;
+
   display: flex;
+
   align-items: center;
   justify-content: center;
+
   border: 1.5px dashed #DEDACC;
+
   border-radius: 4px;
+
   font-size: 12px;
+
   color: #847F6E;
 }
 
-/* OBRAS */
+/* =========================================================
+   OBRAS
+   ========================================================= */
 
 .obra-card {
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
+
   gap: 14px;
+
   background: #fff;
+
   border: 1.5px solid #DEDACC;
+
   border-left: 6px solid #F2B705;
+
   border-radius: 4px;
+
   padding: 14px 16px;
+
   flex-wrap: wrap;
 }
 
@@ -551,68 +853,97 @@ select:focus {
 
 .obra-people-row {
   display: flex;
+
   gap: 16px;
+
   margin-top: 4px;
+
   flex-wrap: wrap;
 }
 
 .obra-person {
   font-size: 13px;
+
   color: #847F6E;
 }
 
 .obra-right {
   display: flex;
+
   align-items: center;
+
   gap: 14px;
 }
 
 .obra-tool-count {
   font-size: 12px;
+
   color: #3E5C76;
+
   font-weight: 600;
 }
 
-/* HISTÓRICO */
+/* =========================================================
+   HISTÓRICO
+   ========================================================= */
 
 .history-card {
   display: flex;
+
   align-items: center;
+
   gap: 14px;
+
   background: #fff;
+
   border: 1.5px solid #DEDACC;
+
   border-radius: 4px;
+
   padding: 12px 16px;
 }
 
 .history-badge {
   flex-shrink: 0;
+
   font-size: 11px;
+
   font-weight: 600;
+
   padding: 5px 10px;
+
   border-radius: 3px;
+
   text-transform: uppercase;
 }
 
 .history-body {
   flex: 1;
+
   min-width: 0;
 }
 
 .history-description {
   font-size: 13px;
+
   color: #847F6E;
+
   margin-top: 2px;
 }
 
 .history-date {
   flex-shrink: 0;
+
   font-size: 12px;
+
   color: #847F6E;
+
   font-weight: 500;
 }
 
-/* RELATÓRIOS */
+/* =========================================================
+   RELATÓRIOS
+   ========================================================= */
 
 .report-section {
   margin-bottom: 8px;
@@ -620,77 +951,117 @@ select:focus {
 
 .report-section-header {
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
+
   padding: 1.25rem 1.5rem .5rem;
 }
 
 .report-section-title {
   font-family: "Oswald", sans-serif;
+
   font-size: 18px;
+
   font-weight: 600;
+
   margin: 0;
 }
 
 .report-count {
   font-size: 12px;
+
   color: #847F6E;
 }
 
 .report-row {
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
+
   gap: 12px;
+
   background: #fff;
+
   border: 1.5px solid #DEDACC;
+
   border-radius: 4px;
+
   padding: 10px 16px;
+
   flex-wrap: wrap;
 }
 
 .report-tag {
   font-size: 11px;
+
   color: #847F6E;
+
   font-weight: 400;
+
   text-transform: uppercase;
 }
 
-/* ESTADOS */
+/* =========================================================
+   ESTADOS
+   ========================================================= */
 
 .empty-state {
   margin: 2rem 1.5rem;
+
   text-align: center;
+
   color: #847F6E;
+
   font-size: 14px;
 }
 
 .error-banner {
   margin: 1.25rem 1.5rem 0;
+
   padding: 10px 14px;
+
   background: #FBE4DA;
+
   color: #C1440E;
+
   border-radius: 4px;
+
   font-size: 13px;
+
   font-weight: 500;
 }
 
 .saving-banner {
   margin: 1.25rem 1.5rem 0;
+
   font-size: 12px;
+
   color: #847F6E;
 }
 
-/* MODAL */
+/* =========================================================
+   MODAL
+   ========================================================= */
 
 .modal-overlay {
   position: fixed;
+
   inset: 0;
-  background: rgba(51,50,45,.5);
+
+  background: rgba(51, 50, 45, .5);
+
   display: flex;
+
   align-items: center;
+
   justify-content: center;
+
   padding: 16px;
+
   z-index: 100;
 }
 
@@ -700,11 +1071,17 @@ select:focus {
 
 .modal {
   background: #fff;
+
   border-radius: 6px;
+
   padding: 1.5rem;
+
   width: 100%;
+
   max-width: 420px;
+
   max-height: 90vh;
+
   overflow-y: auto;
 }
 
@@ -714,103 +1091,191 @@ select:focus {
 
 .modal-title {
   font-family: "Oswald", sans-serif;
+
   font-size: 17px;
+
   font-weight: 600;
+
   margin-bottom: 12px;
 }
 
 .modal-label {
   display: block;
+
   font-size: 12px;
+
   color: #847F6E;
+
   margin-bottom: 6px;
+
   font-weight: 500;
 }
 
 .modal-error {
   font-size: 12px;
+
   color: #C1440E;
+
   margin-top: 8px;
 }
 
 .preview-photos {
   display: flex;
+
   gap: 10px;
+
   flex-wrap: wrap;
+
   margin-bottom: 12px;
 }
 
 .preview-photo {
   width: 130px;
   height: 130px;
+
   object-fit: cover;
+
   border-radius: 4px;
+
   border: 1.5px solid #DEDACC;
 }
 
 .detail-photo {
   width: 72px;
   height: 72px;
+
   object-fit: cover;
+
   border-radius: 4px;
+
   border: 1.5px solid #DEDACC;
 }
 
 .detail-readonly-row {
   display: flex;
+
   justify-content: space-between;
+
   align-items: center;
+
   margin-top: 14px;
+
   padding-top: 12px;
+
   border-top: 1px solid #DEDACC;
 }
 
-/* RESPONSIVO */
+/* =========================================================
+   RESPONSIVO - TABLET
+   ========================================================= */
 
-@media (max-width: 800px) {
+@media (max-width: 900px) {
+
   .sidebar {
-    width: 150px;
+    width: 180px;
+  }
+
+  .main {
+    width: calc(100% - 180px);
+
+    margin-left: 180px;
   }
 
   .tag-card {
     align-items: flex-start;
+
     flex-wrap: wrap;
   }
 
   .tag-actions {
-    width: 100%;
     flex-wrap: wrap;
   }
 
   .tag-status {
     min-width: 0;
   }
-}
 
-@media (max-width: 600px) {
-  #app {
-    flex-direction: column;
+  .header {
+    gap: 20px;
   }
 
-  .sidebar {
+  .title {
+    font-size: 30px;
+  }
+}
+
+/* =========================================================
+   RESPONSIVO - CELULAR
+   ========================================================= */
+
+@media (max-width: 600px) {
+
+  #app {
     width: 100%;
+  }
+
+  /* Menu passa para o topo no celular */
+
+  .sidebar {
+    position: relative;
+
+    top: auto;
+    left: auto;
+    bottom: auto;
+
+    width: 100%;
+    height: auto;
+
+    min-height: auto;
+
     flex-direction: row;
+
     overflow-x: auto;
+    overflow-y: hidden;
+
     padding: 8px;
+
+    gap: 4px;
   }
 
   .sidebar-brand {
     margin-bottom: 0;
+
+    flex-shrink: 0;
   }
 
   .nav-item {
+    width: auto;
+
     white-space: nowrap;
+
+    flex-shrink: 0;
   }
+
+  /* Conteúdo volta a ocupar 100% */
+
+  .main {
+    width: 100%;
+
+    margin-left: 0;
+
+    min-height: calc(100vh - 60px);
+  }
+
+  /* Header */
 
   .header {
     align-items: flex-start;
+
     gap: 15px;
+
     flex-direction: column;
+
+    padding: 1.25rem 1rem 1rem;
+  }
+
+  .title {
+    font-size: 28px;
   }
 
   .header-stats {
@@ -821,9 +1286,19 @@ select:focus {
     flex: 1;
   }
 
+  /* Toolbar */
+
   .toolbar {
     flex-direction: column;
+
     align-items: stretch;
+
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .search-input {
+    width: 100%;
   }
 
   .filter-group {
@@ -838,17 +1313,94 @@ select:focus {
     width: 100%;
   }
 
+  /* Filtros */
+
   .filter-bar {
     flex-direction: column;
+
     align-items: stretch;
+
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .filter-input {
+    width: 100%;
   }
 
   .date-range {
     flex-wrap: wrap;
   }
 
+  /* Lista */
+
+  .list {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .tag-card {
+    align-items: flex-start;
+
+    flex-wrap: wrap;
+  }
+
+  .tag-body {
+    width: calc(100% - 30px);
+  }
+
+  .tag-actions {
+    width: 100%;
+
+    flex-wrap: wrap;
+  }
+
+  .tag-status {
+    width: 100%;
+
+    min-width: 0;
+  }
+
+  /* Histórico */
+
   .history-card {
     align-items: flex-start;
+
     flex-wrap: wrap;
+  }
+}
+
+/* =========================================================
+   TELAS MUITO PEQUENAS
+   ========================================================= */
+
+@media (max-width: 400px) {
+
+  .sidebar-brand-text {
+    display: none;
+  }
+
+  .sidebar-brand {
+    padding: 0 4px;
+  }
+
+  .nav-item {
+    font-size: 13px;
+
+    padding: 9px 10px;
+  }
+
+  .title {
+    font-size: 25px;
+  }
+
+  .stat-block {
+    min-width: 0;
+
+    padding: 6px 8px;
+  }
+
+  .stat-number {
+    font-size: 22px;
   }
 }

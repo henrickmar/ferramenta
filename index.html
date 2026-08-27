@@ -15,7 +15,10 @@
 <body>
 
   <div id="app">
+
+    <!-- MENU LATERAL -->
     <aside class="sidebar">
+
       <div class="sidebar-brand">
         <div class="sidebar-brand-mark">FT</div>
         <div class="sidebar-brand-text">Ferramentaria</div>
@@ -40,19 +43,87 @@
       <button class="nav-item" data-page="relatorios">
         Relatórios
       </button>
+
     </aside>
 
+
+    <!-- CONTEÚDO PRINCIPAL -->
     <main class="main">
+
+      <!-- Mensagens de erro/sucesso -->
       <div id="messages"></div>
+
+      <!-- Conteúdo das páginas -->
       <div id="content"></div>
+
     </main>
+
   </div>
 
-  <!-- Modal -->
-  <div id="modalOverlay" class="modal-overlay hidden">
-    <div id="modalContent" class="modal"></div>
+
+  <!--
+    CONTADORES DO TOPO
+
+    O JavaScript vai preencher:
+    #totalFerramentas
+    #totalAlocadas
+  -->
+
+  <div id="headerStats" class="header-stats">
+
+    <!-- Ferramentas cadastradas -->
+    <div class="stat-block">
+      <div
+        class="stat-number"
+        id="totalFerramentas"
+      >
+        0
+      </div>
+
+      <div class="stat-label">
+        Cadastradas
+      </div>
+    </div>
+
+
+    <!-- Ferramentas alocadas -->
+    <div
+      class="stat-block"
+      id="boxAlocadas"
+    >
+
+      <div
+        class="stat-number"
+        id="totalAlocadas"
+      >
+        0
+      </div>
+
+      <div class="stat-label">
+        Alocadas
+      </div>
+
+    </div>
+
   </div>
 
+
+  <!-- MODAL -->
+  <div
+    id="modalOverlay"
+    class="modal-overlay hidden"
+  >
+
+    <div
+      id="modalContent"
+      class="modal"
+    ></div>
+
+  </div>
+
+
+  <!-- JAVASCRIPT -->
   <script src="script.js"></script>
+
 </body>
 </html>
